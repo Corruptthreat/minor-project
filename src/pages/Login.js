@@ -21,7 +21,7 @@ export default function Login() {
       seterror('')
       setLoading(true)
       await login(emailRef.current.value,passwordRef.current.value)
-      history.push("/")
+      history.push("/home")
     } catch{
       seterror('Failed to sign in')
     }

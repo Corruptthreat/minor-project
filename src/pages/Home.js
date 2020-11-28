@@ -1,11 +1,16 @@
-import React  from 'react'
+import React from "react";
+import { useAuth } from "../context/AuthContext";
+import { Card, Alert, Buton } from "react-bootstrap";
 
-function Home() {
-    return (
-        <div>
-           <h1></h1> 
-        </div>
-    )
-};
-
-export default Home;
+export default function Home() {
+  const { currentUser } = useAuth();
+  return (
+    <div>
+      <Card>
+          <Card.Body>
+              
+          </Card.Body>
+      </Card>
+    </div>
+  );
+}

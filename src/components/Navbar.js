@@ -6,18 +6,26 @@ import {SidebarData} from './SidebarData';
 import './Navbar.css';
 import {IconContext} from 'react-icons';
 import img from './index.png';
+import {Button} from 'react-bootstrap'
+import { useAuth } from '../context/AuthContext'
 
 function Navbar() {
+    const {currentUser} = useAuth()
     const [sidebar,setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar)
+    function handleLogout(){
+        
+    }
     return (
         <>
-        <IconContext.Provider value={{color:'#'}}>
+        <IconContext.Provider value={{color:'#fff'}}>
         <div className="navbar">
             <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar}/>
             </Link>
+            <Button className="logout-button" variant="link" onClick={handleLogout}>Logout</Button>
         </div>
+        
         <nav className={sidebar?'nav-menu active':'nav-menu'}>
             <ul className='nav-menu-items' onClick={showSidebar}>
             <li className='navbar-toggle'>
@@ -29,7 +37,7 @@ function Navbar() {
                 <div className='image-user'>
                     <img src={img}/>
                 </div>
-                <p>User Name</p>
+    <p>{currentUser.email}</p>
             </div>
             {SidebarData.map((item,index)=>{
                 return(

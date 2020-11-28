@@ -21,7 +21,7 @@ export default function Signup() {
       seterror('')
       setLoading(true)
       await signup(emailRef.current.value,passwordRef.current.value)
-      history.push("/")
+      history.push("/home")
     } catch{
       seterror('Failed to create an account')
     }

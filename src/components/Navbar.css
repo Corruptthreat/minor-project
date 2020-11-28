@@ -80,3 +80,9 @@ span{
     height: 170px;
     width: 170px;
 }
+
+.logout-button{
+    background-color: #1a83ff !important;
+    color: #f5f5f5 !important;
+    border-radius: 10px;
+}
