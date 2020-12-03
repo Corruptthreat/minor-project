@@ -1,6 +1,7 @@
 import React, { Component, useRef , useState } from "react";
 import { Form, Card, Button, Container,Alert} from "react-bootstrap";
 import {useAuth} from '../context/AuthContext'
+import {fireDb} from '../FirebaseLogin'
 import {Link , useHistory} from 'react-router-dom'
 
 export default function Login() {
@@ -21,7 +22,28 @@ export default function Login() {
       seterror('')
       setLoading(true)
       await login(emailRef.current.value,passwordRef.current.value)
-      history.push("/home")
+      // role login
+      fireDb.
+      child("users/")
+      .orderByChild("email")
+      .equalTo(emailRef.current.value)
+      .on("value", function(snapshot) {
+        snapshot.forEach(function(data) {
+          localStorage.setItem("key", data.key);
+          console.log(data.key);
+        });
+        localStorage.setItem(
+          "userrole",
+          snapshot.val()[localStorage.getItem("key")].role
+        );
+
+        if (snapshot.val()[localStorage.getItem("key")].role == "admin") {
+          history.push("/Signup")
+        } else {
+          history.push("/home")
+        }
+      });
+      //role login
     } catch{
       seterror('Failed to sign in')
     }
@@ -56,6 +78,9 @@ export default function Login() {
           </Form>
         </Card.Body>
       </Card>
+      <div className="w-100 text-center mt-3">
+      <Link to="/forgot-password">Forgot Password?</Link>
+      </div>
       <div className="w-100 text-center mt-2">
         Need an account? <Link to="/Signup">Sign Up</Link>
       </div>
