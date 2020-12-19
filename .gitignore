@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-/FirebaseLogin.js
+FirebaseLogin.js
 # production
 /build
 
