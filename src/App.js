@@ -8,6 +8,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute'
 import ForgotPassword from './components/ForgotPassword'
+import AdminLogin from './pages/AdminLogin'
 
 
 const    App = ({location}) => {
@@ -17,8 +18,9 @@ const    App = ({location}) => {
     <AuthProvider>
       <Router>
         <Switch>
-          <PrivateRoute path='/' exact component={Home}/>
+          <PrivateRoute path='/' exact component={Login}/>
             <PrivateRoute path='/home' exact component={Home}/>
+            <PrivateRoute path='/Admin' exact component={AdminLogin}/>
           <Route path='/Signup' exact component={Signup}/>
           <Route path='/login'  component={Login}/>
           <Route path='/forgot-password'  component={ForgotPassword}/>

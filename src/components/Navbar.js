@@ -10,7 +10,7 @@ import {Button} from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext'
 
 function Navbar() {
-    const {logout } = useAuth()
+    const { logout } = useAuth()
     const [sidebar,setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar)
     const [error, setError] = useState("")

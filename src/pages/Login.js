@@ -38,7 +38,7 @@ export default function Login() {
         );
 
         if (snapshot.val()[localStorage.getItem("key")].role == "admin") {
-          history.push("/Signup")
+          history.push("/Admin")
         } else {
           history.push("/home")
         }
